@@ -10,10 +10,12 @@ dotenv.config({path: './config/config.env'});
 connectDB();
 
 //Routes files
-const bootcamps = require('./routes/bootcamps')
-
+const bootcamps = require('./routes/bootcamps');
 
 const app = express();
+
+//Body Parser 
+app.use(express.json());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
@@ -29,7 +31,7 @@ app.listen(PORT,
            console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`.yellow.bold));
 
 process.on('unhandledRejection', (err, promise) => {
-    console.log(`${err.message}`.red);
-    //Close server & exit process
-    ServiceWorkerRegistration.close(() => process.exit(1));
-})
+  console.log(`Error: ${err.message}`.red);
+  // Close server & exit process
+  // server.close(() => process.exit(1));
+});
