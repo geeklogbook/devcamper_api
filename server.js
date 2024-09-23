@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('combined'));
+  app.use(morgan('combined'));
 }
 
 // Mount Routers
@@ -33,8 +33,8 @@ const PORT = process.env.PORT || 5000 ;
 app.listen(PORT, 
            console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`.yellow.bold));
 
-process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`.red);
-  // Close server & exit process
-  // server.close(() => process.exit(1));
-});
+// process.on('unhandledRejection', (err, promise) => {
+//   console.log(`Error: ${err.message}`.red);
+//   // Close server & exit process
+//   // server.close(() => process.exit(1));
+// });
